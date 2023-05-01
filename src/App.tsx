@@ -7,9 +7,12 @@ function App() {
   const captureImage = () => {
     const video: any = videoRef.current;
     const canvas: any = document.createElement("canvas");
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext("2d").drawImage(video, 0, 0);
+    canvas.width = video.videoHeight;
+    canvas.height = video.videoWidth;
+    const ctx = canvas.getContext("2d");
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1); // flip horizontally
+    ctx.drawImage(video, 0, 0, canvas.height, canvas.width);
     const dataUrl = canvas.toDataURL();
     setImage(dataUrl);
   };
