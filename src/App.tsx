@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div>
-      <video ref={videoRef} />
+      <video ref={videoRef} style={{ transform: "scaleX(-1)" }} />
       <button onClick={captureImage}>Capture Image</button>
       {image && <img src={image} alt="Captured Image" />}
     </div>
